@@ -50,3 +50,48 @@ main component's scope.
 
 - `global.gss` contains some references to `body`
 - `Mail.java` sets `margin: 0px` and disables scrollbars on the outer window.
+
+### Migrate TopPanel
+
+- create the `TopPanel` component in `lib/nav/top/top_panel.dart` with its usual
+  `html` and `css` files
+- add it to the `app_component.html`: `<top-panel></top-panel>`
+- reference it in the `AppComponent`'s annotation: `directives: const [TopPanel],`
+- start processing `TopPanel.ui.xml`:
+  - move `logo.png` to the `lib/nav/top/` directory
+  - move the styles from `<ui:style>` to `top_panel.css`
+  - copy the structure inside `<g:UIBinder>` to `top_panel.html`
+
+Migrating the logo:
+- the `ui:image` element becomes `<img src="..."/>`
+- to reference the logo, use `src="packages/gwt_mail_sample/nav/top/logo.png"`
+- add the CSS class `logo` to the element
+- remove the `gwt-sprite: "logo";` from the CSS, there is no use for it
+
+Migrating the `g:HTMLPanel`:
+- the logo `div` is not used anymore as we have the `img` element above
+- `class="{style.statusDiv}"` becomes `class="statusDiv"`
+- the `g:Anchor` reference becomes much simpler:
+  
+  in the template:
+  ```
+    <a href="" (click)="signOut($event)">Sign Out</a>
+    <a href="" (click)="showAbout($event)">About</a>
+  ```
+  
+  in the controller (after importing `dart:html`):
+  ```
+  void signOut(MouseEvent event) {
+  }
+  void showAbout(MouseEvent event) {
+  }
+  ```
+
+Implementing the actions:
+- the `signOut` is simple: it calls `window.alert()`
+- the `showAbout` requires the about dialog, let's leave a TODO for now
+
+There are a few tweaks to be made:
+- move the anchor-related (`a`) styles to global.css
+- in both method, add `event.preventDefault();`, because we don't want to
+  have a place change when the user clicks on them

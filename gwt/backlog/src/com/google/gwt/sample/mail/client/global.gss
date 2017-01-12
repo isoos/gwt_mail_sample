@@ -3,9 +3,6 @@
 table {
   font-size: small;
 }
-a:link, a:visited, a:hover, a:active {
-  color: #000;
-}
 
 /* Dialog boxes */
 .dialogTopLeftInner, .dialogMiddleLeftInner, .dialogBottomLeftInner,

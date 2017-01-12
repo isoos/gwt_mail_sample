@@ -10,3 +10,7 @@ html, body {
   /* Window.enableScrolling(false); */
   overflow: hidden;
 }
+
+a:link, a:visited, a:hover, a:active {
+  color: #000;
+}
