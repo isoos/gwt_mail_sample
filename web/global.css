@@ -1,0 +1,12 @@
+body {
+  background: #fff;
+  color: #000;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: small;
+  margin: 0px;
+}
+
+html, body {
+  /* Window.enableScrolling(false); */
+  overflow: hidden;
+}

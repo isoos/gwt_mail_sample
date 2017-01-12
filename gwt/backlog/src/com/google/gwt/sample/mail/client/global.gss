@@ -1,12 +1,7 @@
 @external 'gwt-*' 'dialog*' Caption;
 
-body, table {
+table {
   font-size: small;
-}
-body {
-  font-family: Helvetica, Arial, sans-serif;
-  color: #000;
-  background: #fff;
 }
 a:link, a:visited, a:hover, a:active {
   color: #000;

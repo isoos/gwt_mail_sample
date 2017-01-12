@@ -37,3 +37,16 @@ need to be addressed in the Dart code.
 
 While checking `war/Mail.html` there are a few small touches that
 should be adapted (`<meta>`, `<title>`, `<noscript>`).
+
+### Move favicon.ico to web/
+
+- move `war/favicon.ico` -> `web/favicon.ico`
+
+### Set global CSS styles
+
+We create a `<link>` reference in `web/index.html` that points
+to `global.css` with the few CSS styles that are outside of our
+main component's scope.
+
+- `global.gss` contains some references to `body`
+- `Mail.java` sets `margin: 0px` and disables scrollbars on the outer window.

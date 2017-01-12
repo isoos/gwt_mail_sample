@@ -59,11 +59,6 @@ public class Mail implements EntryPoint {
     // Create the UI defined in Mail.ui.xml.
     DockLayoutPanel outer = binder.createAndBindUi(this);
 
-    // Get rid of scrollbars, and clear out the window's built-in margin,
-    // because we want to take advantage of the entire client area.
-    Window.enableScrolling(false);
-    Window.setMargin("0px");
-
     // Special-case stuff to make topPanel overhang a bit.
     Element topElem = outer.getWidgetContainerElement(topPanel);
     topElem.getStyle().setZIndex(2);
