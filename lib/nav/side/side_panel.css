@@ -1,0 +1,25 @@
+:host {
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+
+:host-context header {
+  /* migrated from .stackHeader */
+  background: url(packages/gwt_mail_sample/nav/side/gradient_bg_dark.png) 0px 0px repeat-x;
+  background-color: #b4b6bc;
+  cursor: pointer;
+  text-shadow: rgba(255, 255, 255, 1) 0 1px 1px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #000;
+  padding: 0.7em 0.5em 0 0.6em;
+  border-top: 1px solid #888;
+}
+
+.content {
+  margin: 8px 0px;
+  overflow: auto;
+  min-height: 30vh;
+  max-height: 50vh;
+}

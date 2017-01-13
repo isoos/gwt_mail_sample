@@ -1,3 +1,8 @@
 :host {
     font-family: Roboto, Helvetica, Arial, sans-serif;
 }
+
+side-panel {
+  float: left;
+  width: 250px;
+}

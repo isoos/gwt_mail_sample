@@ -1,0 +1,42 @@
+<material-expansionpanel
+    flat
+    [showSaveCancel]="false"
+    [expanded]="selectedPanel == 'mailboxes'"
+    (open)="open('mailboxes')"
+    (close)="close($event, 'mailboxes')">
+  <div name>
+    <img src="packages/gwt_mail_sample/nav/side/mailboxesgroup.png" />
+    Mailboxes
+  </div>
+  <div class="content">
+    <mail-folder></mail-folder>
+  </div>
+</material-expansionpanel>
+<material-expansionpanel
+    flat
+    [showSaveCancel]="false"
+    [expanded]="selectedPanel == 'tasks'"
+    (open)="open('tasks')"
+    (close)="close($event, 'tasks')">
+  <div name>
+    <img src="packages/gwt_mail_sample/nav/side/tasksgroup.png" />
+    Tasks
+  </div>
+  <div class="content">
+    <task-list></task-list>
+  </div>
+</material-expansionpanel>
+<material-expansionpanel
+    flat
+    [showSaveCancel]="false"
+    [expanded]="selectedPanel == 'contacts'"
+    (open)="open('contacts')"
+    (close)="close($event, 'contacts')">
+  <div name>
+    <img src="packages/gwt_mail_sample/nav/side/contactsgroup.png" />
+    Contacts
+  </div>
+  <div class="content">
+    <contact-list></contact-list>
+  </div>
+</material-expansionpanel>

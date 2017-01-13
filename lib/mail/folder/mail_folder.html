@@ -1,0 +1,13 @@
+<div *ngFor="let item of items">
+  <div *ngIf="item.isVisible" class="item">
+    <div [style.width.px]="item.indentPx">&nbsp;</div>
+    <div class="toggle">
+      <span *ngIf="item.expandVisible" (click)="item.toggle()">&#x2795;</span>
+      <span *ngIf="item.collapseVisible" (click)="item.toggle()">	&#x2796;</span>
+    </div>
+    <div>
+      <img [src]="item.iconUrl" class="icon"/>
+    </div>
+    <div [class.selected]="item.isSelected" (click)="selectFolder(item)">{{item.label}}</div>
+  </div>
+</div>

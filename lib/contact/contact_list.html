@@ -1,0 +1,18 @@
+<div class="contacts">
+  <div *ngFor="let item of items">
+    <a href="" (click)="showPopup($event, item)">{{item.name}}</a>
+  </div>
+</div>
+
+<material-popup
+    *ngIf="popupVisible"
+    [source]="popupSource"
+    [(visible)]="popupVisible">
+  <div class="popup">
+    <img [src]="selected.photoUrl" class="photo"/>
+    <div class="right">
+      <div>{{selected.name}}</div>
+      <div class="email">{{selected.email}}</div>
+    </div>
+  </div>
+</material-popup>

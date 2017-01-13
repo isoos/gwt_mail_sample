@@ -1,0 +1,25 @@
+.contacts {
+  padding: 0.5em;
+  line-height: 150%;
+}
+
+.popup {
+  background: #fff;
+  border: 1px solid #666;
+  padding: 0.5em;
+  width: 14em;
+  height: 2.5em;
+}
+
+.photo {
+  float: left;
+  margin-right: 4px;
+}
+
+.right {
+  white-space: nowrap;
+}
+
+.email {
+  font-style: italic;
+}

@@ -1,0 +1,18 @@
+.item {
+  display: flex;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  margin-right: 4px;
+}
+
+.toggle {
+  width: 16px;
+}
+
+.selected {
+  font-weight: bold;
+}
