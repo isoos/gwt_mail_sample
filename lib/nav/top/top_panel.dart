@@ -2,12 +2,18 @@ import 'dart:html';
 
 import 'package:angular2/core.dart';
 
+import 'package:gwt_mail_sample/nav/about/about_dialog.dart';
+
 @Component(
   selector: 'top-panel',
   styleUrls: const ['top_panel.css'],
   templateUrl: 'top_panel.html',
+  directives: const [AboutDialog],
 )
 class TopPanel {
+  @ViewChild(AboutDialog)
+  AboutDialog aboutDialog;
+
   void signOut(MouseEvent event) {
     event.preventDefault();
     window.alert('If this were implemented, you would be signed out now.');
@@ -15,6 +21,6 @@ class TopPanel {
 
   void showAbout(MouseEvent event) {
     event.preventDefault();
-    // TODO: show the about dialog, centered
+    aboutDialog.show();
   }
 }

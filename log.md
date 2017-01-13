@@ -95,3 +95,45 @@ There are a few tweaks to be made:
 - move the anchor-related (`a`) styles to global.css
 - in both method, add `event.preventDefault();`, because we don't want to
   have a place change when the user clicks on them
+
+### Migrate AboutDialog
+
+- create the `AboutDialog` component in `lib/nav/about/about_dialog.dart`
+  with its usual `html` and `css` files
+- move `gwt-logo.png` to the same directory
+- move the `.logo` style from `AboutDialog.ui.xml` into
+  `about_dialog.css` (without the `gwt-sprite` attribute)
+- the rest of the styling and Java code is better served with
+  a clean re-implementation with the material modal dialog component
+
+To reference the about dialog:
+- put `<about-dialog></about-dialog>` in `top_panel.html` and add the
+  directive and a `@ViewChild` reference to the controller class:
+  
+  ```
+  @Component(
+    directives: const [AboutDialog],
+  ```
+  
+  ```
+  @ViewChild(AboutDialog)
+  AboutDialog aboutDialog;
+  ```
+  
+  This will inject a reference of the about dialog's controller
+  into the top panel, making it straightforward to display it
+  when needed.
+
+To get started with the material model dialog, take a look into
+the [Angular component examples](https://github.com/dart-lang/angular2_components_example/).
+Using the headered dialog example provided 95% of the functionality,
+with the following tweaks:
+- the dialog's maximum width is set to 60% via CSS
+- `*ngIf="visible"` is used to lazily initialize the dialog
+- the `gwt-logo.png` is referenced by the `packages/...` resource path
+  with the `logo` CSS class
+  
+  There is no conflict, the same CSS class name can be used in
+  separate components (e.g. `logo` both here and in `TopPanel`),
+  because Angular generates scoping rules for each of them.
+
