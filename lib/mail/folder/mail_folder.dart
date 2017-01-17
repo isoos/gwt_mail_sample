@@ -1,6 +1,8 @@
 import 'package:angular2/core.dart';
 import 'package:angular2_components/angular2_components.dart';
 
+import 'package:gwt_mail_sample/mail/mail_service.dart';
+
 const String baseUrl = 'packages/gwt_mail_sample/mail/folder';
 const String defaultIconUrl = '${baseUrl}/noimage.png';
 
@@ -12,10 +14,11 @@ const String defaultIconUrl = '${baseUrl}/noimage.png';
   providers: const [materialProviders],
 )
 class MailFolder {
+  final MailService mailService;
   List<FolderItem> items = [];
   FolderItem _selected;
 
-  MailFolder() {
+  MailFolder(this.mailService) {
     FolderItem root = new FolderItem('foo@example.com',
         iconUrl: '$baseUrl/home.png',
         children: [
@@ -43,6 +46,7 @@ class MailFolder {
     _selected?.isSelected = false;
     item.isSelected = true;
     _selected = item;
+    mailService.selectFolder(item.label);
   }
 }
 

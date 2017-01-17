@@ -456,3 +456,117 @@ With that, we have a simplified tree component that:
 - supports custom icons and styles
 - keep track of a single selected item (which can later trigger the loading the list of messages for that e-mail folder)
 
+
+### Handle e-mail data (MailItems)
+
+In the GWT application, the list of e-mails is stored in `MailItems.java`
+as a static field, and it is generated in a consistent way. The mail-related
+components access it though the static methods.
+
+This approach makes testing, mocking and encapsulation harder, and instead,
+we'll use an injected service to achieve better coupling.
+
+- create `lib/mail/mail_service.dart`
+- migrate `MailItem.java` and create the following data holder class:
+  
+  ```
+  class MailItem {
+    String sender;
+    String email;
+    String subject;
+    String body;
+  
+    MailItem(this.sender, this.email, this.subject, this.body);
+  }
+  ```
+- create the service interface:
+  
+  ```
+  abstract class MailService {
+  }
+  ```
+- add folder selection:
+  
+  ```
+    String get selectedFolder;
+    Future selectFolder(String label);
+  ```
+  
+  `selectFolder` is an asynchronous method that returns with a `Future`,
+  which will complete once the service completes loading the first page.
+- add information about the current folder:
+  
+  ```
+    int get mailCount;
+    List<MailItem> get pageItems;
+  ```
+- add pagination information and page switching methods:
+  
+  ```
+    int get pageIndex;
+    int get pageCount;
+    int get pageSize;
+    Future nextPage();
+    Future prevPage();
+  ```
+  
+  Similarly to the above, the methods complete when the service finishes
+  loading the mail items.
+
+The next step is to create a mock `MailService` implementation:
+- create `lib/mail/mock_mail_service.dart` and start implementing the
+  previously create interface:
+  - keep track of the `selectedFolder`, `mailCount`, `pageIndex`,
+    `pageCount` and `pageItems` properties as private fields 
+  - hardcode `int get pageSize => 20` for simplicity
+- copy the prepared values from `MailItems.java` into private
+  top-level fields (some values need to be fixed, e.g. escape `$` signs)
+- redirect all async methods to a single mail item generator:
+  
+  ```
+    Future nextPage() => _generateItems(selectedFolder, pageIndex + 1);
+    Future prevPage() => _generateItems(selectedFolder, pageIndex - 1);
+    Future selectFolder(String label) => _generateItems(label, 0);
+  
+    Future _generateItems(String label, int newPageIndex) async {
+    }
+  ```
+
+To implement the `_generateItems` method, follow similar logic as
+in `MailItems.createFakeMail()`, with the following additions:
+- initialize e-mail count based on the `label`'s hash
+- check if `page` is valid for that count and reset to `0` if needed
+- calculate how many items needs to be on the page and generate them
+- use `label`, `_pageIndex, and `index` (on page) to initialize the
+  "random" pointers when creating a new mail item
+
+To make it available for components through injection, register it
+in `main.dart` as a provided service. Note that the we register the
+abstract interface, and provide a concrete instance that implements it:
+
+```
+main() {
+  bootstrap(AppComponent, [
+    new Provider(MailService, useValue: new MockMailService()),
+  ]);
+}
+```
+
+Injecting it into the `MailFolder` component requires a small change
+in the constructor:
+
+```
+class MailFolder {
+  final MailService mailService;
+  MailFolder(this.mailService) {
+  // ...
+```
+
+Add its use to the `selectFolder` method:
+
+```
+  void selectFolder(FolderItem item) {
+    // ...
+    mailService.selectFolder(item.label);
+  }
+```
