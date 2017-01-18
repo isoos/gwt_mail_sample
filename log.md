@@ -570,3 +570,41 @@ Add its use to the `selectFolder` method:
     mailService.selectFolder(item.label);
   }
 ```
+
+### Migrate NavBar
+
+Assuming e-mail is always ordered by descending date, the `older >`
+and `< newer` buttons in the NavBar can be easily matched with the
+`MailService`'s `nextPage()` and `prevPage()` methods:
+
+- create the `MailNavBar` component in `lib/mail/list/mail_nav_bar.dart`
+  with its usual `html` and `css` files
+- add the component to `AppComponent`:
+  - `<mail-navbar>` to the template
+  - `MailNavBar` to the `directives` annotation
+- inject the `MailService` into this new component
+- create a very simple template like:
+  
+  ```
+  <material-button dense *ngIf="hasNewer" (click)="newer()">&lt; newer</material-button>
+  {{start}}-{{end}} of {{total}}
+  <material-button dense [disabled]="!hasOlder" (click)="older()">older &gt;</material-button>
+  ```
+  
+  Note: while the newer button becomes visible only after the first page,
+  the older button is always there, but may be disabled. That way the
+  height of the component doesn't change if neither of them is visible.
+- implement the above field and methods like the following:
+  
+  ```
+    int get total => mailService.mailCount;
+    bool get hasNewer => mailService.pageIndex > 0;
+    bool get hasOlder => end < total;
+    
+    void newer() {
+      mailService.prevPage();
+    }
+  ```
+- adapt the `.anchor` CSS style from `NavBar.ui.xml` and
+  apply it on `material-button`
+

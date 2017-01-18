@@ -6,3 +6,8 @@ side-panel {
   float: left;
   width: 250px;
 }
+
+mail-nav-bar {
+  display: block;
+  text-align: right;
+}

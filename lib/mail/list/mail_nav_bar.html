@@ -1,0 +1,3 @@
+<material-button dense *ngIf="hasNewer" (click)="newer()">&lt; newer</material-button>
+{{start}}-{{end}} of {{total}}
+<material-button dense [disabled]="!hasOlder" (click)="older()">older &gt;</material-button>
