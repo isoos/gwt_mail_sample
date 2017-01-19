@@ -738,3 +738,9 @@ changes:
   ```
 - add margin and overflow CSS properties
 
+### Clean GWT backlog
+
+Check the remaining files, but everything should have been migrated
+and they are safe to remove.
+
+- replace the GWT logos with the Dart logo

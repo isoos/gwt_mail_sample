@@ -9,4 +9,6 @@
 
 .logo {
   position: absolute;
+  top: 6px;
+  left: 6px;
 }
