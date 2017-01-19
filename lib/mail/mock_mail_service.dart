@@ -10,6 +10,9 @@ class MockMailService implements MailService {
   List<MailItem> _pageItems;
 
   @override
+  MailItem selectedItem;
+
+  @override
   String get selectedFolder => _selectedFolder;
 
   @override
@@ -54,6 +57,7 @@ class MockMailService implements MailService {
       if (itemCount == 0) itemCount = pageSize;
     }
     _pageItems = new List.generate(itemCount, (index) => _generateItem(index));
+    selectedItem = _pageItems.first;
   }
 
   MailItem _generateItem(int index) {

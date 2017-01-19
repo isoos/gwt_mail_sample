@@ -7,7 +7,6 @@ side-panel {
   width: 250px;
 }
 
-mail-nav-bar {
-  display: block;
-  text-align: right;
+.right-side {
+  margin-left: 260px;
 }

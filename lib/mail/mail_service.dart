@@ -28,6 +28,9 @@ abstract class MailService {
   /// the loaded mail items on the current page
   List<MailItem> get pageItems;
 
+  /// the selected mail that needs to be displayed
+  MailItem selectedItem;
+
   /// selects a folder by its label
   Future selectFolder(String label);
 

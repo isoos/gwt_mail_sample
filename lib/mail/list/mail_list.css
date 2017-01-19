@@ -1,0 +1,61 @@
+.table {
+  border: 1px solid #999;
+}
+
+.header {
+  background-color: #d3d6dd;
+  background: url('packages/gwt_mail_sample/nav/side/gradient_bg_dark.png');
+  border-bottom: 1px solid #999;
+}
+
+.header .col {
+  font-weight: bold;
+  text-shadow: #fff 0 2px 2px;
+}
+
+mail-nav-bar {
+  display: block;
+  text-align: right;
+  flex-grow: 1;
+}
+
+.content {
+  height: 200px;
+  overflow: auto;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.content .row:hover {
+  background: #f8f8f8;
+}
+
+.content .row.selected {
+  background: #adcce7;
+  border-top: 1px solid #88a4d6;
+  border-bottom: 1px solid #7b97d0;
+}
+
+.col {
+  padding: 4px 2px 4px 8px;
+}
+
+.sender {
+  width: 128px;
+  flex-basis: 128px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.email {
+  width: 192px;
+  flex-basis: 192px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}

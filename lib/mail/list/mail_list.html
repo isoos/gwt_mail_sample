@@ -1,0 +1,22 @@
+<div class="table">
+  <div class="header">
+    <div class="row">
+      <div class="col sender">Sender</div>
+      <div class="col email">Email</div>
+      <div class="col subject">
+        Subject
+      </div>
+      <mail-nav-bar></mail-nav-bar>
+    </div>
+  </div>
+  <div class="content">
+    <div *ngFor="let item of items"
+         class="row"
+         (click)="selectRow(item)"
+         [class.selected]="isSelectedRow(item)">
+      <div class="col sender">{{item.sender}}</div>
+      <div class="col email">{{item.email}}</div>
+      <div class="col subject">{{item.subject}}</div>
+    </div>
+  </div>
+</div>

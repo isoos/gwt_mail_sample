@@ -608,3 +608,103 @@ and `< newer` buttons in the NavBar can be easily matched with the
 - adapt the `.anchor` CSS style from `NavBar.ui.xml` and
   apply it on `material-button`
 
+# Migrate MailList
+
+As we don't have a full-blown open source material table yet,
+we will fill in the gap with `*ngFor` and some styling.
+
+- create the `MailList` component in `lib/mail/list/mail_list.dart`
+  with its usual `html` and `css` files
+- inject the `MailService` into this new component
+
+Add the component to `AppComponent`, and at the same time remove
+the `MailNavBar` from it (we'll add it to the header of the list):
+- `<mail-list>` to the template
+- `MailList` to the `directives` annotation
+- use a new CSS style in a `div` to position the mail list component:
+  
+  ```
+  .right-side {
+    margin-left: 260px;
+  }
+  ```
+
+Adapt the style properties for the table, mixing new ones with
+`MailList.ui.xml`:
+- create `.table` style to set the outer border
+- use `.row` with flexbox to create tabular layout
+- set fixed width for the `sender` and `email` columns, restrict their size increase (`flex-grow: 0`)
+- set padding for the columns
+- set background shade and gradient for the `.header`
+- set different background for hovering and for the selected row
+- introduce a content area where rows are going to be scrolled:
+  
+  ```
+  .content {
+    height: 200px;
+    overflow: auto;
+    cursor: pointer;
+  }
+  ```
+
+Create the base layout of the table:
+
+```
+<div class="table">
+  <div class="header">
+    <div class="row">
+      <div class="col sender">Sender</div>
+      <div class="col email">Email</div>
+      <div class="col subject">
+        Subject
+      </div>
+      <mail-nav-bar></mail-nav-bar>
+    </div>
+  </div>
+  <div class="content">
+    <div *ngFor="let item of items"
+         class="row"
+         (click)="selectRow(item)"
+         [class.selected]="isSelectedRow(item)">
+      <div class="col sender">{{item.sender}}</div>
+      <div class="col email">{{item.email}}</div>
+      <div class="col subject">{{item.subject}}</div>
+    </div>
+  </div>
+</div>
+```
+
+The `items` can be a simple pass-through:
+
+```
+  List<MailItem> get items => mailService.pageItems;
+```
+
+To align the `mail-nav-bar` to the right, use some additional styling:
+
+```
+mail-nav-bar {
+  display: block;
+  text-align: right;
+  flex-grow: 1;
+}
+```
+
+In the simplest case `isSelectedRow` and `selectRow` could be implemented
+by introducing a new `MailItem selected` field in the component, but we
+know that we want to expose the same instance in the `MailDetail`, a
+component that we'll build in the next step.
+
+One way to share the data between the two is to place the field inside
+`MailService`, and update it each time the mailbox folder or the pagination
+changes:
+
+```
+  void selectRow(MailItem item) {
+    mailService.selectedItem = item;
+  }
+
+  bool isSelectedRow(MailItem item) => mailService.selectedItem == item;
+```
+
+
