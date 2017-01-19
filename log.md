@@ -707,4 +707,34 @@ changes:
   bool isSelectedRow(MailItem item) => mailService.selectedItem == item;
 ```
 
+### Migrate MailDetail
+
+- create the `MailDetail` component in `lib/mail/detail/mail_detail.dart`
+  with its usual `html` and `css` files
+- inject the `MailService` into this new component
+- add the component to `AppComponent`:
+  - `<mail-detail>` to the template
+  - `MailDetail` to the `directives` annotation
+- copy most of the styling from `MailDetail.ui.xml`
+- migrate the template, it will be roughly as simple as:
+  
+  ```
+  <div class="detail">
+    <div class="header">
+      <div class="headerItem">{{subject}}</div>
+      <div class="headerItem"><b>From: </b>{{sender}}</div>
+      <div class="headerItem"><b>To: </b>{{recipient}}</div>
+    </div>
+    <div class="body" [innerHTML]="body"></div>
+  </div>
+  ```
+- the fields shall be delegates:
+  
+  ```
+    String get subject => mailService.selectedItem?.subject;
+    String get sender => mailService.selectedItem?.sender;
+    String get recipient => 'foo@example.com';
+    String get body => mailService.selectedItem?.body;
+  ```
+- add margin and overflow CSS properties
 

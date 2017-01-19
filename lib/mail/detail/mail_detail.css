@@ -1,0 +1,22 @@
+.detail {
+  margin-top: 10px;
+  border: 1px solid #666;
+}
+
+.header {
+  padding: 0.5em;
+  background: #eee;
+  border-bottom: 1px solid #666;
+}
+
+.headerItem {
+  margin-bottom: 0.5em;
+}
+
+.body {
+  line-height: 150%;
+  padding: 20px 40px 20px 10px;
+  font-family: "Times New Roman",Times,serif;
+  max-height: 200px;
+  overflow: auto;
+}
