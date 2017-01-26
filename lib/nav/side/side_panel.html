@@ -2,11 +2,10 @@
     flat
     [showSaveCancel]="false"
     [expanded]="selectedPanel == 'mailboxes'"
-    (open)="open('mailboxes')"
-    (close)="close($event, 'mailboxes')">
-  <div name>
-    <img src="packages/gwt_mail_sample/nav/side/mailboxesgroup.png" />
-    Mailboxes
+    (open)="open('mailboxes')">
+  <div name class="header">
+    <div><glyph icon="mail_outline"></glyph></div>
+    <div>Mailboxes</div>
   </div>
   <div class="content">
     <mail-folder></mail-folder>
@@ -16,11 +15,10 @@
     flat
     [showSaveCancel]="false"
     [expanded]="selectedPanel == 'tasks'"
-    (open)="open('tasks')"
-    (close)="close($event, 'tasks')">
-  <div name>
-    <img src="packages/gwt_mail_sample/nav/side/tasksgroup.png" />
-    Tasks
+    (open)="open('tasks')">
+  <div name class="header">
+    <div><glyph icon="view_list"></glyph></div>
+    <div>Tasks</div>
   </div>
   <div class="content">
     <task-list></task-list>
@@ -30,11 +28,10 @@
     flat
     [showSaveCancel]="false"
     [expanded]="selectedPanel == 'contacts'"
-    (open)="open('contacts')"
-    (close)="close($event, 'contacts')">
-  <div name>
-    <img src="packages/gwt_mail_sample/nav/side/contactsgroup.png" />
-    Contacts
+    (open)="open('contacts')">
+  <div name class="header">
+    <div><glyph icon="contact_mail"></glyph></div>
+    <div>Contacts</div>
   </div>
   <div class="content">
     <contact-list></contact-list>

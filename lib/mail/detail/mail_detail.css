@@ -1,12 +1,12 @@
 .detail {
   margin-top: 10px;
-  border: 1px solid #666;
+  border: 1px solid rgba(0,0,0,0.12);
 }
 
 .header {
   padding: 0.5em;
   background: #eee;
-  border-bottom: 1px solid #666;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
 }
 
 .headerItem {

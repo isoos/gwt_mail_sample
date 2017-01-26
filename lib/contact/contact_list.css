@@ -1,25 +1,29 @@
-.contacts {
-  padding: 0.5em;
-  line-height: 150%;
+.item {
+  padding: 0.6em 4px;
+  cursor: pointer;
+}
+
+.item:hover {
+  text-decoration: underline;
 }
 
 .popup {
   background: #fff;
-  border: 1px solid #666;
-  padding: 0.5em;
+  padding: 1.5em;
   width: 14em;
   height: 2.5em;
 }
 
 .photo {
   float: left;
-  margin-right: 4px;
 }
 
 .right {
   white-space: nowrap;
+  margin-left: 56px;
 }
 
 .email {
+  margin-top: 8px;
   font-style: italic;
 }

@@ -1,9 +1,6 @@
 import 'package:angular2/core.dart';
 import 'package:angular2_components/angular2_components.dart';
 
-// TODO: use a non-private implementation
-import 'package:angular2_components/src/model/action/async_action.dart';
-
 import 'package:gwt_mail_sample/contact/contact_list.dart';
 import 'package:gwt_mail_sample/mail/folder/mail_folder.dart';
 import 'package:gwt_mail_sample/task/task_list.dart';
@@ -21,9 +18,5 @@ class SidePanel {
 
   void open(String panel) {
     selectedPanel = panel;
-  }
-
-  void close(AsyncAction action, String panel) {
-    if (panel == selectedPanel) action.cancel();
   }
 }

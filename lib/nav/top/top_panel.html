@@ -1,14 +1,20 @@
-<img src="packages/gwt_mail_sample/nav/top/dart-logo-60.png" class="logo"/>
-
-<div class="statusDiv">
-  <div>
-    <b>Welcome back, foo@example.com</b>
+<div class="wrapper">
+  <div class="app">
+    <img src="packages/gwt_mail_sample/nav/top/dart-logo-60.png" class="logo"/>
+    <h1>AngularDart Mail Sample App</h1>
   </div>
 
-  <div class="linksDiv">
-    <a href="" (click)="signOut($event)">Sign Out</a>
-    <a href="" (click)="showAbout($event)">About</a>
+  <div class="statusDiv">
+    <div>
+      <b>Welcome back, foo@example.com</b>
+    </div>
+
+    <div class="linksDiv">
+      <a href="" (click)="signOut($event)">Sign Out</a>
+      <a href="" (click)="showAbout($event)">About</a>
+      <a href="https://github.com/isoos/gwt_mail_sample">GitHub</a>
+    </div>
   </div>
+
+  <about-dialog></about-dialog>
 </div>
-
-<about-dialog></about-dialog>

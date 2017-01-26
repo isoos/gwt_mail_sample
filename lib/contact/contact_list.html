@@ -1,7 +1,5 @@
 <div class="contacts">
-  <div *ngFor="let item of items">
-    <a href="" (click)="showPopup($event, item)">{{item.name}}</a>
-  </div>
+  <div *ngFor="let item of items" class="item" (click)="showPopup($event, item)">{{item.name}}</div>
 </div>
 
 <material-popup

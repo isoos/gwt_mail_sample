@@ -744,3 +744,20 @@ Check the remaining files, but everything should have been migrated
 and they are safe to remove.
 
 - replace the GWT logos with the Dart logo
+
+### Make the design fresh
+
+- update borders with a light-gray version (`rgba(0,0,0,0.12)`)
+- remove the dark gradient background from headers, make it much lighter
+- remove `text-shadow` styles
+- increase global font size (11pt)
+- use more whitespace and a nicer hovering effect in side menus
+- add ripple to the mail item selection
+- don't hide the 'newer' button, disable instead
+- add proper site name to the top nav, remove logo overlap
+- add link to the source code in the top nav
+- replace icons in side panel with material glyphs
+- replace icons in mail folder with material glyphs (and migrate to the new list widget)
+- let the side panel to be collapsed
+
+

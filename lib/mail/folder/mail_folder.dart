@@ -3,8 +3,7 @@ import 'package:angular2_components/angular2_components.dart';
 
 import 'package:gwt_mail_sample/mail/mail_service.dart';
 
-const String baseUrl = 'packages/gwt_mail_sample/mail/folder';
-const String defaultIconUrl = '${baseUrl}/noimage.png';
+const String defaultIconGlyph = 'mail_outline';
 
 @Component(
   selector: 'mail-folder',
@@ -19,20 +18,19 @@ class MailFolder {
   FolderItem _selected;
 
   MailFolder(this.mailService) {
-    FolderItem root = new FolderItem('foo@example.com',
-        iconUrl: '$baseUrl/home.png',
-        children: [
-          new FolderItem('Inbox', iconUrl: '$baseUrl/inbox.png'),
-          new FolderItem('Drafts', iconUrl: '$baseUrl/drafts.png'),
-          new FolderItem('Templates', iconUrl: '$baseUrl/templates.png'),
-          new FolderItem('Sent', iconUrl: '$baseUrl/sent.png'),
-          new FolderItem('Trash', iconUrl: '$baseUrl/trash.png'),
-          new FolderItem('custom-1', children: [
-            new FolderItem('custom-1-1'),
-            new FolderItem('custom-1-2'),
-            new FolderItem('custom-1-3'),
-          ]),
-        ]);
+    FolderItem root =
+        new FolderItem('foo@example.com', glyph: 'home', children: [
+      new FolderItem('Inbox', glyph: 'inbox'),
+      new FolderItem('Drafts', glyph: 'drafts'),
+      new FolderItem('Templates', glyph: 'content_paste'),
+      new FolderItem('Sent', glyph: 'send'),
+      new FolderItem('Trash', glyph: 'delete'),
+      new FolderItem('custom-parent', children: [
+        new FolderItem('child-1'),
+        new FolderItem('child-2'),
+        new FolderItem('child-3'),
+      ]),
+    ]);
     _traverseItems(root);
     selectFolder(root);
   }
@@ -43,17 +41,18 @@ class MailFolder {
   }
 
   void selectFolder(FolderItem item) {
-    _selected?.isSelected = false;
-    item.isSelected = true;
-    _selected = item;
-    mailService.selectFolder(item.label);
+    if (_selected == item) {
+      item.toggle();
+    } else {
+      _selected = item;
+      mailService.selectFolder(item.label);
+    }
   }
 }
 
 class FolderItem {
-  String iconUrl;
+  String glyph;
   String label;
-  bool isSelected = false;
   bool isExpanded;
   FolderItem parent;
   List<FolderItem> children;
@@ -62,14 +61,14 @@ class FolderItem {
   bool get isVisible => isRoot || (parent.isVisible && parent.isExpanded);
 
   bool get hasChildren => children?.isNotEmpty ?? false;
-  bool get expandVisible => hasChildren && !isExpanded;
-  bool get collapseVisible => hasChildren && isExpanded;
+  bool get toggleVisible => hasChildren;
+  String get toggleGlyph => isExpanded ? 'expand_more' : 'chevron_right';
 
   int get depth => parent == null ? 0 : parent.depth + 1;
-  int get indentPx => depth * 16;
+  int get indentPx => (depth * 16) + (toggleVisible ? 0 : 40);
 
   FolderItem(this.label,
-      {this.iconUrl: defaultIconUrl,
+      {this.glyph: defaultIconGlyph,
       this.isExpanded: true,
       List<FolderItem> this.children}) {
     children?.forEach((child) {

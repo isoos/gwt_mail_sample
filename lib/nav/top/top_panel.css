@@ -1,14 +1,28 @@
+.wrapper {
+  display: flex;
+}
+
+.app {
+  width: 60%;
+}
+
 .statusDiv {
+  width: 40%;
   text-align: right;
   margin: 1em;
 }
 
 .linksDiv {
+  margin-top: 8px;
   text-align: right;
 }
 
+.linksDiv a {
+  display: inline-block;
+  margin-left: 0.75em;
+}
+
 .logo {
-  position: absolute;
-  top: 6px;
-  left: 6px;
+  float: left;
+  padding: 4px;
 }

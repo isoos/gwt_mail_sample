@@ -1,16 +1,14 @@
 .table {
-  border: 1px solid #999;
+  border: 1px solid rgba(0,0,0,0.12);
 }
 
 .header {
-  background-color: #d3d6dd;
-  background: url('packages/gwt_mail_sample/nav/side/gradient_bg_dark.png');
-  border-bottom: 1px solid #999;
+  background-color: #eee;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
 }
 
 .header .col {
   font-weight: bold;
-  text-shadow: #fff 0 2px 2px;
 }
 
 mail-nav-bar {
@@ -30,6 +28,7 @@ mail-nav-bar {
   align-items: center;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
+  position: relative;
 }
 
 .content .row:hover {
@@ -38,8 +37,8 @@ mail-nav-bar {
 
 .content .row.selected {
   background: #adcce7;
-  border-top: 1px solid #88a4d6;
-  border-bottom: 1px solid #7b97d0;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
 }
 
 .col {
