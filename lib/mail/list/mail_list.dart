@@ -14,6 +14,9 @@ import 'package:gwt_mail_sample/mail/list/mail_nav_bar.dart';
 class MailList {
   MailService mailService;
 
+  @Input()
+  int height = 200;
+
   List<MailItem> get items => mailService.pageItems;
 
   MailList(this.mailService);

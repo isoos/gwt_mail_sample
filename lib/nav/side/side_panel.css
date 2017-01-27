@@ -5,8 +5,6 @@
 .content {
   margin: 8px 0px;
   overflow: auto;
-  min-height: 30vh;
-  max-height: 50vh;
 }
 
 .header {

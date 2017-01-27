@@ -1,8 +1,8 @@
-<div class="detail">
+<div class="detail" #bottom>
   <div class="header">
     <div class="headerItem">{{subject}}</div>
     <div class="headerItem"><b>From: </b>{{sender}}</div>
     <div class="headerItem"><b>To: </b>{{recipient}}</div>
   </div>
-  <div class="body" [innerHTML]="body"></div>
+  <div class="body" [innerHTML]="body" [style.height.px]="heightPx"></div>
 </div>

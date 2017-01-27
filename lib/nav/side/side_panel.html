@@ -7,7 +7,7 @@
     <div><glyph icon="mail_outline"></glyph></div>
     <div>Mailboxes</div>
   </div>
-  <div class="content">
+  <div class="content" [style.height.px]="heightPx">
     <mail-folder></mail-folder>
   </div>
 </material-expansionpanel>
@@ -20,7 +20,7 @@
     <div><glyph icon="view_list"></glyph></div>
     <div>Tasks</div>
   </div>
-  <div class="content">
+  <div class="content" [style.height.px]="heightPx">
     <task-list></task-list>
   </div>
 </material-expansionpanel>
@@ -33,7 +33,8 @@
     <div><glyph icon="contact_mail"></glyph></div>
     <div>Contacts</div>
   </div>
-  <div class="content">
+  <div class="content" [style.height.px]="heightPx">
     <contact-list></contact-list>
   </div>
 </material-expansionpanel>
+<div #bottom></div>

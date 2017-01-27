@@ -1,6 +1,10 @@
 <top-panel></top-panel>
-<side-panel></side-panel>
-<div class="right-side">
-  <mail-list></mail-list>
-  <mail-detail></mail-detail>
+<div class="side-wrapper">
+  <side-panel [style.flex-basis.px]="sideWidthPx"></side-panel>
+  <div class="side-resizer" (mousedown)="resizeSide($event)"></div>
+  <div class="mail-wrapper">
+    <mail-list [height]="mailHeightPx"></mail-list>
+    <div class="mail-resizer" (mousedown)="resizeMail($event)"></div>
+    <mail-detail></mail-detail>
+  </div>
 </div>

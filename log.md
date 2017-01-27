@@ -760,4 +760,138 @@ and they are safe to remove.
 - replace icons in mail folder with material glyphs (and migrate to the new list widget)
 - let the side panel to be collapsed
 
+### Resize panels on dragging the resizer between them
+
+In the absence of layout- or docking panels, we can keep track of
+our panels' desired dimension and bind it to the appropriate CSS property.
+
+- in `MailList` component create a new property:
+  
+  ```
+    @Input()
+    int height = 200;
+  ```
+
+- bind it to the height CSS:
+  
+  ```
+  <div class="content" [style.height.px]="height">
+  ```
+  
+  Note: at this point the `height: 200px` can be removed from the CSS.
+
+- create three flex-based panel list in `AppComponent`:
+  - one for the top (with fixed height) and the rest
+  - one for the side panel (with a resizer) and the rest of mail panels
+  - one for the separation of `mail-list` and `mail-detail`
+
+- create new fields for the dimensions:
+  
+  ```
+    int sideWidthPx = 250;
+    int mailHeightPx = 250;
+  ```
+
+- bind their values to the components:
+  
+  ```
+  <side-panel [style.flex-basis.px]="sideWidthPx"></side-panel>
+  <mail-list [height]="mailHeightPx"></mail-list>
+  ```
+
+- Handling the resize can be implemented by listening on `mousedown`
+  events, and on each of these, track the `mousemove` and `mouseup`
+  on the `document` Element. For example:
+  
+  ```
+    <div class="side-resizer" (mousedown)="resizeSide($event)"></div>
+  ```
+  
+  ```
+    void resizeSide(MouseEvent down) {
+      int originX = down.client.x;
+      int originWidth = sideWidthPx;
+      StreamSubscription subscription =
+          document.onMouseMove.listen((MouseEvent move) {
+        move.preventDefault();
+        move.stopPropagation();
+        int newWidth = originWidth + move.client.x - originX;
+        sideWidthPx = max(200, min(newWidth, 500));
+      });
+      document.onMouseUp.first.then((MouseEvent up) {
+        subscription.cancel();
+      });
+    }
+  ```
+
+- set the appropriate mouse cursor on the `-resizer` styles
+
+### Stretch the components to fill the available space
+
+The internal scroll handling (`overflow:auto`) of the components
+doesn't make it easy to stretch the components to fill the screen.
+Instead, we can monitor the layout with `DomService` and act on any
+event the affects the layout.
+
+The following guide is for `MailDetail`, implement a similar
+mechanism for `SidePanel`:
+
+- Annotate the bottommost `div` with `#bottom` (or create a new one at
+  the end of the html template):
+  
+  ```
+  <div #bottom></div>
+  ```
+
+- Make sure it is injected into the component:
+  
+  ```
+    @ViewChild('bottom')
+    ElementRef bottomRef;
+  ```
+
+- Initialize a height value for the content area, and calculate the
+  gap (the difference that it needs to add to the value):
+  
+  ```
+    int heightPx = 200;
+    
+    int _calculateGap() {
+      Element element = bottomRef.nativeElement;
+      int bottom = element.offsetTop + element.offsetHeight;
+      return window.innerHeight - bottom;
+    }
+  ```
+
+- Import and inject `DomService`. It is a useful utility that enables
+  very efficient (and forced relayout-free) tracking of changes on
+  the UI.
+
+- Implement `AfterContentInit` and `OnDestroy` on the component class.
+  On initialization we subscribe to layout tracking, and on destroy the
+  subscription needs be cleared up:
+  
+  ```
+    StreamSubscription _layoutSubscription;
+    
+    @override
+    ngAfterContentInit() {
+      _layoutSubscription =
+          domService.trackLayoutChange(_calculateGap, (int gap) {
+        heightPx = max(10, heightPx + gap);
+      }, runInAngularZone: true);
+    }
+    
+    @override
+    ngOnDestroy() {
+      _layoutSubscription?.cancel();
+      _layoutSubscription = null;
+    }
+  ```
+
+- Bind the height value in the template:
+  
+  ```
+  <div class="body" [innerHTML]="body" [style.height.px]="heightPx"></div>
+  ```
 

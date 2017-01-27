@@ -1,12 +1,51 @@
 :host {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+top-panel {
+  display: block;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 80px;
+  overflow: hidden;
+}
+
+.side-wrapper {
+  display: flex;
+}
+
+.side-resizer {
+  cursor: col-resize;
+  flex-shrink: 0;
+  flex-basis: 10px;
 }
 
 side-panel {
-  float: left;
-  width: 250px;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
-.right-side {
-  margin-left: 260px;
+.mail-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+}
+
+mail-list {
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.mail-resizer {
+  cursor: row-resize;
+  flex-shrink: 0;
+  flex-basis: 10px;
+}
+
+mail-detail {
+  flex-grow: 1;
 }

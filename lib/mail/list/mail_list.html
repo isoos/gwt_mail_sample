@@ -9,7 +9,7 @@
       <mail-nav-bar></mail-nav-bar>
     </div>
   </div>
-  <div class="content">
+  <div class="content" [style.height.px]="height">
     <div *ngFor="let item of items"
          class="row"
          (click)="selectRow(item)"

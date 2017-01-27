@@ -18,7 +18,6 @@ mail-nav-bar {
 }
 
 .content {
-  height: 200px;
   overflow: auto;
   cursor: pointer;
 }
