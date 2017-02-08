@@ -895,3 +895,42 @@ mechanism for `SidePanel`:
   <div class="body" [innerHTML]="body" [style.height.px]="heightPx"></div>
   ```
 
+### Trim down the generated code size
+
+Developing the application and working with the material components was
+was easy, because we did import everything available, like the following code:
+
+```
+import 'package:angular2_components/angular2_components.dart';
+
+@Component(
+  // ...
+  directives: const [materialDirectives],
+  providers: const [materialProviders],
+)
+```
+
+But the convenience has it price: it prevents proper tree-shaking, and the
+`dart2js` compiler won't be able to decide which components need to be
+included in final build. To make it easier for the tools, as a last step, we
+shall clear up our dependencies, and only import the directly used ones:
+
+```
+import 'package:angular2_components/src/components/material_popup/material_popup.dart';
+import 'package:angular2_components/src/laminate/popup/popup.dart';
+
+@Component(
+  // ...
+  directives: const [MaterialPopupComponent],
+)
+```
+
+Guiding tree-shaking with the above approach helps to remove a good chunk
+of unused code. In addition to that, we can fine-tune the `dart2js` compilation
+with additional command line attributes in the `pubspec.yaml`:
+
+```
+- $dart2js:
+     commandLineOptions: [--trust-type-annotations --trust-primitives]
+```
+

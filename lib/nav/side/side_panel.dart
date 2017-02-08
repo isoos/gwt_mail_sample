@@ -3,9 +3,10 @@ import 'dart:html';
 import 'dart:math' show max;
 
 import 'package:angular2/core.dart';
-import 'package:angular2_components/angular2_components.dart';
 
 // TODO: use a non-private implementation
+import 'package:angular2_components/src/components/glyph/glyph.dart';
+import 'package:angular2_components/src/components/material_expansionpanel/material_expansionpanel.dart';
 import 'package:angular2_components/src/utils/browser/dom_service/dom_service.dart';
 
 import 'package:gwt_mail_sample/contact/contact_list.dart';
@@ -16,8 +17,13 @@ import 'package:gwt_mail_sample/task/task_list.dart';
   selector: 'side-panel',
   styleUrls: const ['side_panel.css'],
   templateUrl: 'side_panel.html',
-  directives: const [ContactList, MailFolder, materialDirectives, TaskList],
-  providers: const [materialProviders],
+  directives: const [
+    ContactList,
+    GlyphComponent,
+    MailFolder,
+    MaterialExpansionPanel,
+    TaskList,
+  ],
 )
 class SidePanel implements AfterContentInit, OnDestroy {
   DomService domService;

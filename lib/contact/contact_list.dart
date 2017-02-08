@@ -1,7 +1,8 @@
 import 'dart:html';
 
 import 'package:angular2/core.dart';
-import 'package:angular2_components/angular2_components.dart';
+import 'package:angular2_components/src/components/material_popup/material_popup.dart';
+import 'package:angular2_components/src/laminate/popup/popup.dart';
 
 const String defaultPhotoUrl =
     'packages/gwt_mail_sample/contact/default_photo.jpg';
@@ -10,8 +11,7 @@ const String defaultPhotoUrl =
   selector: 'contact-list',
   styleUrls: const ['contact_list.css'],
   templateUrl: 'contact_list.html',
-  directives: const [materialDirectives],
-  providers: const [materialProviders],
+  directives: const [MaterialPopupComponent],
 )
 class ContactList {
   List<ContactItem> items = [

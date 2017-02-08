@@ -1,7 +1,7 @@
 import 'dart:math' show min;
 
 import 'package:angular2/core.dart';
-import 'package:angular2_components/angular2_components.dart';
+import 'package:angular2_components/src/components/material_button/material_button.dart';
 
 import 'package:gwt_mail_sample/mail/mail_service.dart';
 
@@ -9,8 +9,7 @@ import 'package:gwt_mail_sample/mail/mail_service.dart';
   selector: 'mail-nav-bar',
   styleUrls: const ['mail_nav_bar.css'],
   templateUrl: 'mail_nav_bar.html',
-  directives: const [materialDirectives],
-  providers: const [materialProviders],
+  directives: const [MaterialButtonComponent],
 )
 class MailNavBar {
   MailService mailService;

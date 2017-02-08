@@ -3,7 +3,7 @@ import 'dart:html';
 import 'dart:math' show min, max;
 
 import 'package:angular2/core.dart';
-import 'package:angular2_components/angular2_components.dart';
+import 'package:angular2_components/src/laminate/popup/module.dart';
 
 import 'package:gwt_mail_sample/nav/top/top_panel.dart';
 import 'package:gwt_mail_sample/nav/side/side_panel.dart';
@@ -15,7 +15,7 @@ import 'package:gwt_mail_sample/mail/list/mail_list.dart';
   styleUrls: const ['app_component.css'],
   templateUrl: 'app_component.html',
   directives: const [MailDetail, MailList, TopPanel, SidePanel],
-  providers: const [materialProviders],
+  providers: const [popupBindings],
 )
 class AppComponent {
   int sideWidthPx = 250;

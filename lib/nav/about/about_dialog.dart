@@ -1,13 +1,18 @@
 import 'package:angular2/core.dart';
-import 'package:angular2_components/angular2_components.dart';
+import 'package:angular2_components/src/components/material_button/material_button.dart';
+import 'package:angular2_components/src/components/material_dialog/material_dialog.dart';
+import 'package:angular2_components/src/laminate/components/modal/modal.dart';
 
 @Component(
   selector: 'about-dialog',
   styleUrls: const ['about_dialog.css'],
   templateUrl: 'about_dialog.html',
-  inputs: const['visible'],
-  directives: const [materialDirectives],
-  providers: const [materialProviders],
+  inputs: const ['visible'],
+  directives: const [
+    MaterialButtonComponent,
+    MaterialDialogComponent,
+    ModalComponent,
+  ],
 )
 class AboutDialog {
   bool visible = false;

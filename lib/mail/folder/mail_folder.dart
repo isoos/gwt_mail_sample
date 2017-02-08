@@ -1,5 +1,7 @@
 import 'package:angular2/core.dart';
-import 'package:angular2_components/angular2_components.dart';
+import 'package:angular2_components/src/components/glyph/glyph.dart';
+import 'package:angular2_components/src/components/material_list/material_list.dart';
+import 'package:angular2_components/src/components/material_list/material_list_item.dart';
 
 import 'package:gwt_mail_sample/mail/mail_service.dart';
 
@@ -9,8 +11,11 @@ const String defaultIconGlyph = 'mail_outline';
   selector: 'mail-folder',
   styleUrls: const ['mail_folder.css'],
   templateUrl: 'mail_folder.html',
-  directives: const [materialDirectives],
-  providers: const [materialProviders],
+  directives: const [
+    GlyphComponent,
+    MaterialListComponent,
+    MaterialListItemComponent,
+  ],
 )
 class MailFolder {
   final MailService mailService;
