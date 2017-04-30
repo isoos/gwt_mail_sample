@@ -1,5 +1,5 @@
 import 'package:angular2/core.dart';
-import 'package:angular2_components/src/components/material_ripple/material_ripple.dart';
+import 'package:angular_components/src/components/material_ripple/material_ripple.dart';
 
 import 'package:gwt_mail_sample/mail/mail_service.dart';
 import 'package:gwt_mail_sample/mail/list/mail_nav_bar.dart';

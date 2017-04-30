@@ -1,7 +1,7 @@
 import 'package:angular2/core.dart';
-import 'package:angular2_components/src/components/material_button/material_button.dart';
-import 'package:angular2_components/src/components/material_dialog/material_dialog.dart';
-import 'package:angular2_components/src/laminate/components/modal/modal.dart';
+import 'package:angular_components/src/components/material_button/material_button.dart';
+import 'package:angular_components/src/components/material_dialog/material_dialog.dart';
+import 'package:angular_components/src/laminate/components/modal/modal.dart';
 
 @Component(
   selector: 'about-dialog',

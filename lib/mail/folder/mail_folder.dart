@@ -1,7 +1,7 @@
 import 'package:angular2/core.dart';
-import 'package:angular2_components/src/components/glyph/glyph.dart';
-import 'package:angular2_components/src/components/material_list/material_list.dart';
-import 'package:angular2_components/src/components/material_list/material_list_item.dart';
+import 'package:angular_components/src/components/glyph/glyph.dart';
+import 'package:angular_components/src/components/material_list/material_list.dart';
+import 'package:angular_components/src/components/material_list/material_list_item.dart';
 
 import 'package:gwt_mail_sample/mail/mail_service.dart';
 

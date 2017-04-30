@@ -3,7 +3,7 @@ import 'dart:html';
 import 'dart:math' show max;
 
 import 'package:angular2/core.dart';
-import 'package:angular2_components/src/utils/browser/dom_service/dom_service.dart';
+import 'package:angular_components/src/utils/browser/dom_service/dom_service.dart';
 
 import 'package:gwt_mail_sample/mail/mail_service.dart';
 
