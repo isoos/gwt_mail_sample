@@ -5,9 +5,9 @@ import 'dart:math' show max;
 import 'package:angular2/core.dart';
 
 // TODO: use a non-private implementation
-import 'package:angular2_components/src/components/glyph/glyph.dart';
-import 'package:angular2_components/src/components/material_expansionpanel/material_expansionpanel.dart';
-import 'package:angular2_components/src/utils/browser/dom_service/dom_service.dart';
+import 'package:angular_components/src/components/glyph/glyph.dart';
+import 'package:angular_components/src/components/material_expansionpanel/material_expansionpanel.dart';
+import 'package:angular_components/src/utils/browser/dom_service/dom_service.dart';
 
 import 'package:gwt_mail_sample/contact/contact_list.dart';
 import 'package:gwt_mail_sample/mail/folder/mail_folder.dart';

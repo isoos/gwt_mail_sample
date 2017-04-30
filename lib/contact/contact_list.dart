@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import 'package:angular2/core.dart';
-import 'package:angular2_components/src/components/material_popup/material_popup.dart';
-import 'package:angular2_components/src/laminate/popup/popup.dart';
+import 'package:angular_components/src/components/material_popup/material_popup.dart';
+import 'package:angular_components/src/laminate/popup/popup.dart';
 
 const String defaultPhotoUrl =
     'packages/gwt_mail_sample/contact/default_photo.jpg';

@@ -901,7 +901,7 @@ Developing the application and working with the material components was
 was easy, because we did import everything available, like the following code:
 
 ```
-import 'package:angular2_components/angular2_components.dart';
+import 'package:angular_components/angular_components.dart';
 
 @Component(
   // ...
@@ -916,8 +916,8 @@ included in final build. To make it easier for the tools, as a last step, we
 shall clear up our dependencies, and only import the directly used ones:
 
 ```
-import 'package:angular2_components/src/components/material_popup/material_popup.dart';
-import 'package:angular2_components/src/laminate/popup/popup.dart';
+import 'package:angular_components/src/components/material_popup/material_popup.dart';
+import 'package:angular_components/src/laminate/popup/popup.dart';
 
 @Component(
   // ...
