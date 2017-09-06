@@ -3,11 +3,11 @@
     <material-list-item *ngIf="item.isVisible"
                         (click)="selectFolder(item)"
                         [style.padding-left.px]="item.indentPx">
-      <glyph *ngIf="item.toggleVisible"
+      <material-icon *ngIf="item.toggleVisible"
              [icon]="item.toggleGlyph"
              class="material-list-item-primary"
-             (click)="item.toggle()"></glyph>
-      <glyph [icon]="item.glyph" class="icon"></glyph>
+             (click)="item.toggle()"></material-icon>
+      <material-icon [icon]="item.glyph" class="icon"></material-icon>
       {{item.label}}
     </material-list-item>
   </template>

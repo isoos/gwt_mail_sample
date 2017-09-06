@@ -1,5 +1,5 @@
 import 'package:angular/angular.dart';
-import 'package:angular_components/src/components/glyph/glyph.dart';
+import 'package:angular_components/src/components/material_icon/material_icon.dart';
 import 'package:angular_components/src/components/material_list/material_list.dart';
 import 'package:angular_components/src/components/material_list/material_list_item.dart';
 
@@ -12,7 +12,7 @@ const String defaultIconGlyph = 'mail_outline';
   styleUrls: const ['mail_folder.css'],
   templateUrl: 'mail_folder.html',
   directives: const [
-    GlyphComponent,
+    MaterialIconComponent,
     MaterialListComponent,
     MaterialListItemComponent,
     COMMON_DIRECTIVES
