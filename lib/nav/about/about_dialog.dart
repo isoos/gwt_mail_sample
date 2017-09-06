@@ -1,4 +1,4 @@
-import 'package:angular2/core.dart';
+import 'package:angular/angular.dart';
 import 'package:angular_components/src/components/material_button/material_button.dart';
 import 'package:angular_components/src/components/material_dialog/material_dialog.dart';
 import 'package:angular_components/src/laminate/components/modal/modal.dart';
@@ -12,6 +12,7 @@ import 'package:angular_components/src/laminate/components/modal/modal.dart';
     MaterialButtonComponent,
     MaterialDialogComponent,
     ModalComponent,
+    COMMON_DIRECTIVES
   ],
 )
 class AboutDialog {

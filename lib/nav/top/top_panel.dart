@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:angular2/core.dart';
+import 'package:angular/core.dart';
 
 import 'package:gwt_mail_sample/nav/about/about_dialog.dart';
 
