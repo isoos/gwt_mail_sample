@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:angular2/core.dart';
+import 'package:angular/angular.dart';
 import 'package:angular_components/src/components/material_popup/material_popup.dart';
 import 'package:angular_components/src/laminate/popup/popup.dart';
 
@@ -11,7 +11,7 @@ const String defaultPhotoUrl =
   selector: 'contact-list',
   styleUrls: const ['contact_list.css'],
   templateUrl: 'contact_list.html',
-  directives: const [MaterialPopupComponent],
+  directives: const [MaterialPopupComponent, COMMON_DIRECTIVES],
 )
 class ContactList {
   List<ContactItem> items = [

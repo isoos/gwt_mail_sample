@@ -1,5 +1,4 @@
-import 'package:angular2/di.dart';
-import 'package:angular2/platform/browser.dart';
+import 'package:angular/angular.dart';
 
 import 'package:gwt_mail_sample/app/app_component.dart';
 import 'package:gwt_mail_sample/mail/mail_service.dart';

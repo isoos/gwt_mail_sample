@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:math' show max;
 
-import 'package:angular2/core.dart';
+import 'package:angular/core.dart';
 
 // TODO: use a non-private implementation
 import 'package:angular_components/src/components/glyph/glyph.dart';
