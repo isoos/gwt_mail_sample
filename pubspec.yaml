@@ -21,4 +21,4 @@ transformers:
     commandLineOptions:
       - --trust-type-annotations
       - --trust-primitives
-      #- --dump-info
+      - --dump-info
