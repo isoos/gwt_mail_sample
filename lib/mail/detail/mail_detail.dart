@@ -13,8 +13,8 @@ import 'package:gwt_mail_sample/mail/mail_service.dart';
   templateUrl: 'mail_detail.html',
 )
 class MailDetail implements AfterContentInit, OnDestroy {
-  DomService domService;
-  MailService mailService;
+  final DomService domService;
+  final MailService mailService;
   StreamSubscription _layoutSubscription;
 
   String get subject => mailService.selectedItem?.subject;

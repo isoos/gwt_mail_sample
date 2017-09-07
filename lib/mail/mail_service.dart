@@ -1,10 +1,10 @@
 import 'dart:async';
 
 class MailItem {
-  String sender;
-  String email;
-  String subject;
-  String body;
+  final String sender;
+  final String email;
+  final String subject;
+  final String body;
 
   MailItem(this.sender, this.email, this.subject, this.body);
 }
