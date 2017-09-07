@@ -12,7 +12,7 @@ import 'package:gwt_mail_sample/mail/mail_service.dart';
   directives: const [MaterialButtonComponent],
 )
 class MailNavBar {
-  MailService mailService;
+  final MailService mailService;
 
   int get _pageOffset => mailService.pageIndex * mailService.pageSize;
   int get total => mailService.mailCount;

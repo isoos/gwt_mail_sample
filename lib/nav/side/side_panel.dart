@@ -24,7 +24,7 @@ import 'package:gwt_mail_sample/task/task_list.dart';
   ],
 )
 class SidePanel implements AfterContentInit, OnDestroy {
-  DomService domService;
+  final DomService domService;
   StreamSubscription _layoutSubscription;
 
   String selectedPanel = 'mailboxes';

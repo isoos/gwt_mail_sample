@@ -20,7 +20,7 @@ const String defaultIconGlyph = 'mail_outline';
 )
 class MailFolder {
   final MailService mailService;
-  List<FolderItem> items = [];
+  final items = <FolderItem>[];
   FolderItem _selected;
 
   MailFolder(this.mailService) {
@@ -57,11 +57,11 @@ class MailFolder {
 }
 
 class FolderItem {
-  String glyph;
-  String label;
+  final String glyph;
+  final String label;
   bool isExpanded;
   FolderItem parent;
-  List<FolderItem> children;
+  final List<FolderItem> children;
 
   bool get isRoot => parent == null;
   bool get isVisible => isRoot || (parent.isVisible && parent.isExpanded);

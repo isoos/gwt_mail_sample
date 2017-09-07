@@ -11,7 +11,7 @@ import 'package:gwt_mail_sample/mail/list/mail_nav_bar.dart';
   directives: const [MailNavBar, MaterialRippleComponent, COMMON_DIRECTIVES],
 )
 class MailList {
-  MailService mailService;
+  final MailService mailService;
 
   @Input()
   int height = 200;

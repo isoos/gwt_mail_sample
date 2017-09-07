@@ -40,8 +40,8 @@ class ContactList {
 }
 
 class ContactItem {
-  String name;
-  String email;
-  String photoUrl;
+  final String name;
+  final String email;
+  final String photoUrl;
   ContactItem(this.name, this.email, {this.photoUrl: defaultPhotoUrl});
 }

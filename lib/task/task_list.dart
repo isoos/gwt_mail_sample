@@ -7,7 +7,7 @@ import 'package:angular_components/src/components/material_checkbox/material_che
   directives: const [MaterialCheckboxComponent, COMMON_DIRECTIVES],
 )
 class TaskList {
-  List<TaskItem> items = [
+  final items = <TaskItem>[
     new TaskItem('Get groceries'),
     new TaskItem('Walk the dog'),
     new TaskItem('Start Web 2.0 company'),
