@@ -74,9 +74,7 @@ class FolderItem {
   int get indentPx => (depth * 16) + (toggleVisible ? 0 : 40);
 
   FolderItem(this.label,
-      {this.glyph: defaultIconGlyph,
-      this.isExpanded: true,
-      List<FolderItem> this.children}) {
+      {this.glyph: defaultIconGlyph, this.isExpanded: true, this.children}) {
     children?.forEach((child) {
       child.parent = this;
     });
