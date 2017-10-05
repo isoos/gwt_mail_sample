@@ -1,4 +1,4 @@
-:host-context header {
+:host ::ng-deep header {
   background-color: #eee;
 }
 
@@ -12,6 +12,6 @@
   align-items: center;
 }
 
-.header glyph {
+.header material-icon {
   margin-right: 6px;
 }
